@@ -34,6 +34,7 @@ There are no outside dependencies for this code so you can simply git clone this
 ``` javascript
 > set = new DictSet([0, 2, 4, Array, Function])
 DictSet {
+  Array: [ 0, 2, 4, [Function: Array], [Function: Function] ],
   Dict: {
     '0': 0,
     '2': 2,
@@ -44,3 +45,19 @@ DictSet {
   size: 5
 }
 ```
+
+``` javascript
+> set = new DictSet([-0, 0, 1, 2])
+DictSet {
+  Array: [ -0, 1, 2 ],
+  Dict: { '0': -0, '1': 1, '2': 2 },
+  size: 3
+}
+> iters = set[Symbol.iterator]()
+Object [Generator] {}
+> iters.next().value
+-0
+> iters.next().value
+1
+```
+
