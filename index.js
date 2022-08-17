@@ -1,6 +1,6 @@
 export default class DictSet {
   constructor(values) {
-    this.init(values)
+    this._init(values)
   }
 
   add(obj) {
@@ -8,7 +8,6 @@ export default class DictSet {
       this.Array.push(obj)
       this.size = this.size + 1
       this.Dict[obj] = obj
-
     } else if (!this.Dict.hasOwnProperty(obj)) {
       this.Array.push(obj)
       this.size = this.size + 1
@@ -16,7 +15,7 @@ export default class DictSet {
     }
   }
 
-  init(values) {
+  _init(values) {
     this.Array = []
     this.Dict = {}
     this.size = 0
@@ -31,7 +30,7 @@ export default class DictSet {
   }
 
   clear() {
-    this.init()
+    this._init()
   }
 
   *values() {
