@@ -1,10 +1,3 @@
-// A set is a list of unique values.
-//
-// notest
-// here
-
-
-
 export default class DictSet {
   constructor(values) {
     this.init(values)
