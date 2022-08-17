@@ -61,3 +61,34 @@ Object [Generator] {}
 1
 ```
 
+The following shows how a renamed function will create two unique entries in both `DictSet` and `Set`.
+
+``` javascript
+> dset = new DictSet()
+DictSet { Array: [], Dict: {}, size: 0 }
+> nset = new Set()
+Set(0) {}
+> function tell() { consol.log("one") }
+undefined
+> dset.add(tell)
+undefined
+> nset.add(tell)
+Set(1) { [Function: tell] }
+> function tell() { consol.log("two") }
+undefined
+> dset.add(tell)
+undefined
+> nset.add(tell)
+Set(2) { [Function: tell], [Function: tell] }
+> nset.size
+2
+> dset
+DictSet {
+  Array: [ [Function: tell], [Function: tell] ],
+  Dict: {
+    'function tell() { consol.log("one") }': [Function: tell],
+    'function tell() { consol.log("two") }': [Function: tell]
+  },
+  size: 2
+}
+```
