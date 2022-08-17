@@ -36,7 +36,6 @@ function testPreserveOrder() {
   const data = [null, undefined, 0, Array, 2]
   const set = new DictSet(data)
   const values = set.values()
-
   assert.equal(values.next().value, null)
   assert.equal(values.next().value, undefined)
   assert.equal(values.next().value, 0)
@@ -44,7 +43,13 @@ function testPreserveOrder() {
   assert.equal(values.next().value, 2)
 }
 
+function testZeroStorage() {
+  const data = [0, -0]
+  const set = new DictSet(data)
+  assert.equal(set.size, 2)
+}
+
 
 (function testsSet() {
-  test([testUnique, testPreserveOrder])
+  test([testUnique, testPreserveOrder, testZeroStorage])
 })()

@@ -4,7 +4,12 @@ export default class DictSet {
   }
 
   add(obj) {
-    if (!this.Dict.hasOwnProperty(obj)) {
+    if (Object.is(obj, -0) && !this.Dict.hasOwnProperty('-0')) {
+      this.Array.push(obj)
+      this.size = this.size + 1
+      this.Dict[obj] = obj
+
+    } else if (!this.Dict.hasOwnProperty(obj)) {
       this.Array.push(obj)
       this.size = this.size + 1
       this.Dict[obj] = obj
