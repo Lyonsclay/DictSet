@@ -3,7 +3,7 @@
 * The items are iterable by their insertion order.
 * Built with nodejs core library using `node@16.16.0`.
 
-`DictSet` replicates the api of JavaScript `Set` including a variety of generator functions ment to access the members of the Set(values(), keys(), entries() and [Symbol.iterator]()). One exception is the way `DictSet` handles the value -0; it considers this distinct from 0. Before checking how `Set` handled -0, I assumed it should be distinct from 0. `Set` actually treats -0 and 0 the same, but I decided to treat them as different being that they are different objects in JavaScript. 
+`DictSet` replicates the api of JavaScript `Set` including a variety of generator functions that are meant to access the members of Set(values(), keys(), entries() and [Symbol.iterator]()). One exception is the way `DictSet` handles the value -0; it considers this distinct from 0. Before checking how `Set` handled -0, I assumed it should be distinct from 0. `Set` actually treats -0 and 0 the same, but I decided to treat them as different being that they are different objects in JavaScript. 
 
 I used a basic javascript object as a dictionary to implement a Set; objects are stored with their string representation as the key. However, I realised that while the latest javascript iterables preserve the order of the items, the order is determined in part by the type of the key. If the key is a number or a string representation of a number then those keys will come first in alphabetical/numerical order. So I added an array to store the objects in the order of inserstion. 
 
