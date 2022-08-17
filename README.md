@@ -3,7 +3,6 @@
 * The items are iterable by their insertion order.
 * Built with nodejs core library using `node@16.16.0`.
 
-
 I used a basic javascript object as a dictionary to implement a Set; objects are stored with their string representation as the key. However, I realised that while the latest javascript iterables preserve the order of the items, the order is determined in part by the type of the key. If the key is a number or a string representation of a number then those keys will come first in alphabetical/numerical order. So I added an array to store the objects in the order of inserstion. 
 
 Storing the object twice will use more memory but insures the fastest lookups. Indeed the `DictSet` is about twice as fast in most tests than `Set` from the core library. In fact, I was going to create a hash map implementation of Set but decided that wasn't neccesary because the performance of `DictSet` is superior(with some interesting caveats that are mentioned below).
@@ -15,14 +14,15 @@ I added some tests comparing the performance of various methods on `DictSet` and
 
 There are no outside dependencies for this code so you can simply git clone this repo and then run the following commands to test.
 
-To run the benchmarks:
+* To run the benchmarks:
 
 `npm run benchmark`
 
-To run the tests:
+* To run the tests:
 
 `npm test`
 
+* Example usage:
 
 ``` javascript
 > set = new DictSet([0, 2, 4, Array, Function])
