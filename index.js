@@ -5,31 +5,31 @@
 
 
 
-export default class Sentient {
+export default class DictSet {
   constructor(values) {
     this.init(values)
   }
+
   add(obj) {
-    this.Hash[obj] = obj
+    if (!this.Dict.hasOwnProperty(obj)) {
+      this.Array.push(obj)
+      this.size = this.size + 1
+      this.Dict[obj] = obj
+    }
   }
-  addList(list) {
-    for (l in list) this.add(l)
 
-  }
   init(values) {
-
-    this.Hash = function(oSource) {
-      for (sKey in oSource) if (Object.prototype.hasOwnProperty.call(oSource, sKey)) this[sKey] = oSource[sKey];
-    };
-    // this.Hash.prototype = Object.create(null);
+    this.Array = []
+    this.Dict = {}
+    this.size = 0
     if (values) {
       if (typeof values == "object" && values.length) {
-        for (let v in values) this.add(v)
+        values.forEach(v => this.add(v))
+        // for (let i in values) this.add(values[i])
       } else {
         this.add(values)
       }
     }
-
   }
 
   clear() {
@@ -37,23 +37,30 @@ export default class Sentient {
   }
 
   *values() {
-    const names = Object.getOwnPropertyNames(job.Hash)
-    for (let i in names) {
-      const prop = names[i]
-      console.log({prop})
-      try {
-        assert.notDeepStrictEqual(this.Hash[prop], Object.create(null))
-        yield this.Hash[prop]
-      } catch {
-        undefined
-      }
-    }
+    yield* this.Array
   }
 
+  [Symbol.iterator]() {
+    return this.values()
+  }
 
   keys() {
     return this.values()
   }
 
+  *entries() {
+    const values = this.values()
+    for (let v in values) {
+      const nv = v.next()
+      yield [nv, nv]
+    }
+  }
 
+  has(value) {
+    return this.Dict.hasOwnProperty(value)
+  }
+
+  forEach(func) {
+    this.Dict.values().forEach(func)
+  }
 }

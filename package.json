@@ -1,0 +1,17 @@
+{
+  "name": "sets",
+  "version": "1.0.0",
+  "description": "An O(1) implementation of a Set.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "benchmark": "node map-bench.cjs"
+  },
+  "keywords": [
+    "Blazing",
+    "Fast"
+  ],
+  "author": "clay",
+  "license": "ISC"
+}
