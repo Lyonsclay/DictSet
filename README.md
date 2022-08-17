@@ -1,7 +1,7 @@
 ### Custom Set implementation in JavaScript
-1.) All items in set are unique. 
-2.) The items are iterable by their insertion order.
-3.) Built with nodejs core library using `node@16.16.0`.
+* All items in set are unique. 
+* The items are iterable by their insertion order.
+* Built with nodejs core library using `node@16.16.0`.
 
 
 I used a basic javascript object as a dictionary to implement a Set; objects are stored with their string representation as the key. However, I realised that while the latest javascript iterables preserve the order of the items, the order is determined in part by the type of the key. If the key is a number or a string representation of a number then those keys will come first in alphabetical/numerical order. So I added an array to store the objects in the order of inserstion. 
